@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Эскиз</title>
+    <style>
+        p {
+            width: 200px;
+            height: 20px;
+            margin: 100px;
+            padding: 5px 10px;
+            background-color: #e6e6e6;
+            border: 1px solid #e6e6e6;
+        }
+        .t-b:after {
+            position: absolute;
+            content: '';
+            left: 90px;
+            width: 260px;
+            height: 1px;
+            background-color: #000;
+        }
+        .t-b:before {
+            position: absolute;
+            content: '';
+            left: 90px;
+            top: 130px;
+            width: 260px;
+            height: 1px;
+            background-color: #000;
+        }
+        .l-r:after {
+            position: absolute;
+            content: '';
+            left: 108px;
+            top: 85px;
+            width: 1px;
+            height: 60px;
+            background-color: #000;
+        }
+        .l-r:before {
+            position: absolute;
+            content: '';
+            left: 330px;
+            top: 85px;
+            width: 1px;
+            height: 60px;
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <span class="t-b"></span>
+    <p>Рабочий эскиз</p>
+    <span class="l-r"></span>
+</body>
+</html>

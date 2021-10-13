@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма регистрации</title>
+    <style>
+        body {
+            padding: 80px;
+        }
+        form {
+            width: 550px;
+            height: 310px;
+            padding: 10px 100px 10px 0px;
+            background-color: #fff;
+            border: 1px solid #aca7a7;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+        }
+        
+        label, input, .capcha {
+            margin: 5px 35px;
+        }
+        label {
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+            font-size: 12px;
+        }
+        .check {
+            position: absolute;
+            top: 105px;
+            left: 560px;
+        }
+        .check2 {
+            position: absolute;
+            top: 135px;
+            left: 560px;
+        }
+        .check3 {
+            position: absolute;
+            top: 165px;
+            left: 560px;
+        }
+        .check4 {
+            position: absolute;
+            top: 215px;
+            left: 560px;
+        }
+        .check5 {
+            position: absolute;
+            top: 245px;
+            left: 560px;
+        }
+        .check6 {
+            position: absolute;
+            top: 275px;
+            left: 560px;
+        }
+        .check7 {
+            position: absolute;
+            top: 345px;
+            left: 560px;
+        }
+        input:valid + span:after {
+            content: '';
+            background-image: url(./img/imgs/ok.svg); 
+            padding-left: 5px;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            background-repeat: no-repeat;
+        }
+        input:invalid + span:after {
+            content: '';
+            background-image: url(./img/imgs/nook.svg);
+            padding-left: 5px;
+            width: 20px;
+            height: 20px; 
+            position: absolute;
+            background-repeat: no-repeat;    
+        }
+        input[type="number"] {
+            width: 50px;
+        }
+        div {
+            width: 500px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin: 0px;
+            padding: 0px;
+         }
+        .form-btn {
+            width: 650px;
+            height: 40px;
+            background-color: #d4d3d3;
+            margin: 60px 0px;
+            border-radius: 5px;
+        }
+        .btn {
+            height: 25px;
+            padding: 5px 20px;
+            margin: 8px 60px;
+            background: linear-gradient(#62a820dd, #65ec59dd);
+            color: #fff;
+            border: none;
+            border-top-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="#">
+        <div>
+            <label for="">Имя</label>
+            <input type="text" required>
+            <span class="check"></span>
+        </div>
+        <div>
+            <label for="">Фамилия</label>
+            <input type="text" required>
+            <span class="check2"></span>
+        </div>
+        <div>
+            <label for="">Город</label>
+            <input type="text" required>
+            <span class="check3"></span>
+        </div><br>
+        <div>
+            <label for="">Эл. почта</label>
+            <input type="email" required>
+            <span class="check4"></span>
+        </div>
+        <div>
+            <label for="">Пароль</label>
+            <input type="password" required>
+            <span class="check5"></span>
+        </div>
+        <div>
+            <label for="">Повторите</label>
+            <input type="password" required>
+            <span class="check6"></span>
+        </div><br>
+        <label for="">Введите число с картинки</label><br>
+        <div>
+            
+            <span class="capcha">55102</span>
+            <input type="text" required>
+            <span class="check7"></span>
+        </div>
+      
+        <div class="form-btn">
+            <input class="btn" type="submit" value="Зарегистритоваться">
+        </div>
+    </form>
+   
+</body>
+</html>

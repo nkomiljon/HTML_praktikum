@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рамка</title>
+    <style>
+        /* .area {
+            width: 400px;
+            height: 400px;
+            background-color: #068f56;
+            box-shadow: 8px 8px rgb(110 239 175 / 80%), 16px 16px rgb(79 181 130 / 80%);
+        } */
+        /* .area {
+            width: 400px;
+            height: 400px;
+            background-color: #8aecc3;
+            position: relative;
+         
+        }
+        .area::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            top: -5px;
+            left: -5px;
+         
+            background-color: #50dda2;
+        }
+        .area::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            left: -10px;
+            top: -10px;
+            
+            background-color: #068f56;
+        } */
+        .area {
+            width: 400px;
+            height: 400px;
+            background-color: #83eec1;
+        }
+        .area-1 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #caebdd;
+            left: -5px;
+            top: -5px;
+        }
+        .area-2 {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background-color: #068f56;
+            left: -10px;
+            top: -10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <div class="area-1">
+            <div class="area-2"></div>
+        </div>
+    </div>
+</body>
+</html>

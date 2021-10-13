@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь</title>
+     <style>
+         .area {
+            border-radius: 0 10px 10px 0;
+            width: 300px;
+            position: fixed; 
+            height: 100px; 
+            top: 100px;
+            left: -320px;
+            border-right: 20px solid #b2be0a; 
+            padding: 10px;
+            transition: left 1s;
+            display: flex;
+        }
+         .area::after {
+            content: 'Обратная связь';
+            color: #000; 
+            position: absolute; 
+            right: -60px; 
+            bottom: 50px;
+            transform: rotate(-90deg); 
+            -webkit-transform: rotate(-90deg);
+         }
+         .area:hover {
+            left: 0;
+            background-color: #000;
+            border-radius: 5px;
+         }
+        img {
+            margin: 0 5px;
+        }
+        h3 {
+             color: #fff;
+             font-size: 15px;
+         }
+     </style>
+</head>
+<body>
+    <div class="area">
+        <img src="https://media.istockphoto.com/photos/white-puzzle-144pcs-picture-id518619114?b=1&k=20&m=518619114&s=170667a&w=0&h=j9fFCtbfJ6Ep69p3IFK5vbv9yZIgm4brh-gKtpZBGTM=" style="width: 150px; height: 100px; display: block;" alt="">
+        <h3>Если у вас возникли вопросы по этому коду звоите мне по телефону 555-3298. Звонки платный.</h3>
+    </div>
+</body>
+</html>

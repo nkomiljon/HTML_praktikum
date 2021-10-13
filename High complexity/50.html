@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма для коктейлей</title>
+    <style>
+        fieldset {
+            width: 1000px;
+            background: linear-gradient(#c0bdba, #f8f8f1);
+            border-radius: 5px;
+            border: 1px solid #c0bdba;
+        }
+        button {
+            width: 150px;
+            height: 25px;
+            border: none;
+            background: linear-gradient(#f7a74dd2, #e97f07);
+            color: #fff;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
+            border-top-left-radius: 10px;
+            border-bottom-left-radius: 10px;
+        }
+        input {
+            width: 300px;
+            height: 20px;
+            padding: 1px 4px;
+            border: 1px solid #e7e7e7;
+            border-top: 1px solid #cacaca; 
+         }
+        textarea {
+            width: 500px;
+            padding: 1px 4px;
+            border: 1px solid #e7e7e7;
+            border-top: 1px solid #cacaca; 
+        }
+        .left-area {
+            height: 417px;
+            width: 320px;
+            margin: 40px 20px 0 0;
+            background: url(https://drive.google.com/uc?export=download&id=0BziKaF39HOaEckxhamhQQ2VDYTQ) no-repeat 0 0;
+            position: absolute;
+            top: 0;
+            right: 700px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+       <fieldset>
+           <legend><button type="submit">Описание</button></legend>
+           <form action="#">
+               <label for="">Название коктейля</label><br>
+               <input type="text"><br>
+               <label for="">Альтернативные названия (через запятую)</label><br>
+               <input type="text"><br>
+               <label for="">Краткое описание</label><br>
+               <textarea name="" id="" cols="30" rows="10"></textarea><br>
+               <label for="">Краткое описание</label><br>
+               <textarea name="" id="" cols="30" rows="10"></textarea>
+           </form>
+           <div class="left-area">
+
+           </div>
+       </fieldset>
+    
+</body>
+</html>

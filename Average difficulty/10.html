@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .black {
+            width: 50px;
+            height: 50px;
+            background: -moz-linear-gradient(top, #000, #333232); 
+            background: -o-linear-gradient(top, #000, #333232); 
+            background: -ms-linear-gradient(top, #000, #333232);
+            background: linear-gradient(#000, #333232);
+            border: 1px solid #fff;
+            box-shadow: 0 0 0 1px #838080, 
+                0 0 0 1px #838080,
+                1px 0 0 1px #838080;
+            position: relative;
+        }
+        .white {
+            width: 50px;
+            height: 50px;
+            background: -moz-linear-gradient(top, #fff, #f8f5f5); 
+            background: -o-linear-gradient(top, #fff, #f8f5f5); 
+            background: -ms-linear-gradient(top, #fff, #f8f5f5);
+            background: linear-gradient(#fff, #f8f5f5);
+            box-shadow: 0 0 0 1px #838080, 
+                0 0 0 1px #838080,
+                1px 0 0 1px #838080;
+            position: absolute;
+            top: 30px;
+            left: 30px;
+        }
+    </style>
+</head>
+<body>
+  <div class="black"></div>
+  <div class="white"></div>
+</body>
+</html>

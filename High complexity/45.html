@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Шаг 4</title>
+    <style>
+        .area {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin: 20px 40px;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            background-color: #e6e6e6;
+            border-radius: 50%;
+            margin: 5px 20px;
+            text-align: center;
+            padding: 10px;
+        }
+        span {
+            color: #fff;
+        }
+        .five span {
+            color: #000;
+        }
+        .one, .two, .three {
+            background-color: chartreuse;
+        }
+        .one::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            top: 42px;
+            left: 108px;
+            background-color: #e6e6e6;
+        }
+        .two::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            top: 42px;
+            left: 188px;
+            background-color: #e6e6e6;
+        }
+        .three::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            top: 42px;
+            left: 268px;
+            background-color: #e6e6e6;
+        }
+        .four {
+            background-color: darkorchid;
+        }
+        .four::after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 5px;
+            top: 42px;
+            left: 348px;
+            background-color: #e6e6e6;
+        }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <div class="circle one"><span>1</span></div>
+        <div class="circle two"><span>2</span></div>
+        <div class="circle three"><span>3</span></div>
+        <div class="circle four"><span>4</span></div>
+        <div class="circle five"><span>5</span></div>
+    </div>
+</body>
+</html>

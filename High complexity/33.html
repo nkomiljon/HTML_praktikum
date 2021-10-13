@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рейтинг</title>
+    <style>
+        .area {
+            width: 500px;
+            height: 50px;
+            background-color: #e6e6e6;
+            border-radius: 5px;
+            position: relative;
+        }
+        .area::after {
+            position: absolute;
+            content: '9691';
+            width: 30%;
+            height: 15px;
+            padding: 18px;
+            text-align: center;
+            background-color: #4a7905;
+            color: #fff;
+            border-radius: 5px;
+            top: 0;
+            left: 0;
+        }
+        button {
+            top: 10px;
+            left: 100px;
+            border: none;
+            box-shadow: 1px 1px 5px rgba(58, 53, 53, 0.66);
+        }
+        button:first-child {
+                background-color: red;
+                top: 15px;
+                left: 400px;
+                position: absolute;
+        }
+        button:nth-last-child(1) {
+           background-color: #4a7905;
+           top: 15px;
+           left: 450px;
+           position: absolute;
+       }
+       span {
+           position: absolute;
+           top: 15px;
+           left: 430px;
+       }
+       .reting {
+           position: absolute;
+           content: '';
+           top: 15px;
+           left: 5px;
+           color: rgb(15, 4, 4);
+       }
+    </style>
+</head>
+<body>
+    <div class="area">
+        
+        <button>-</button>
+        <span>6</span>
+        <button>+</button>
+    </div>
+</body>
+</html>

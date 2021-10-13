@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .item-list {
+           width: 200px;
+           height: 45px;
+           background-color: darkgray;
+        
+        }
+        .pager {
+            align-items: center;
+            margin: 0;
+            padding: 12px;
+            text-align: center;
+            background-color: #e6e6e6;
+        }
+        li {
+            display: inline-block;
+            align-items: center;
+            padding: 0 10px;
+            
+        } 
+        li > a {
+            text-decoration: none;
+            color: #642602;
+        }
+        .first > span {
+            background-color: #c9c8c8;
+            padding: 11px;
+            border-bottom: 5px solid #000;
+        } 
+    </style>
+</head>
+<body>
+    <div class="item-list">
+        <ul class="pager">
+         <li class="pager-current first"><span>1</span></li>
+         <li class="pager-item"><a href="/node?page=1" title="На страницу номер 2">2</a></li>
+         <li class="pager-item"><a href="/node?page=2" title="На страницу номер 3">3</a></li>
+         <li class="pager-item"><a href="/node?page=3" title="На страницу номер 4">4</a></li>
+         <li class="pager-next last"><a href="/node?page=1" title="На следующую страницу">›</a></li>
+        </ul>
+    </div>
+    <p>Содержание</p>     
+</body>
+</html>

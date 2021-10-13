@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        <style>
+            .diagram {
+                width: 100px;
+                height: 100px;
+                background: #f0f8e1;
+                border-radius: 50%;
+                border: 24px solid #95CD8B;
+                border-right: 24px solid #D0E6BB;
+                text-align: center;
+                font-size: 70px;
+                font-family: Times, sans-serif;
+            }
+            span {
+                font-size: 0.6em;
+            }
+            .diagram__after {
+                width: 100px;
+                height: 100px;
+                background: #f0f8e1;
+                border-radius: 50%;
+                border: 24px solid #95CD8B;
+                border-left: 24px solid #D0E6BB;
+                text-align: center;
+                font-size: 70px;
+                font-family: Times, sans-serif;
+            }
+        </style>
+</head>
+<body>
+    <div class="diagram">
+        <span>75%</span>
+    </div>
+    <script>
+        const diagram = document.querySelector('div');
+        const span = document.querySelector('span');
+
+       diagram.addEventListener('mousemove', () => {
+            if(!diagram.classList.toggle('diagram__after')) {
+                diagram.classList.remove('diagram__after');
+                diagram.classList.add('diagram');
+                span.textContent = '25%';
+            } else {
+                diagram.classList.add('diagram__after');
+                diagram.classList.remove('diagram');
+                span.textContent='75%';
+            }
+       });
+    </script>
+</body>
+</html>

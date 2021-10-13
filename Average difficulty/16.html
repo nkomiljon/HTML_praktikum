@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отступ под изображением</title>
+</head>
+<body>
+    <style>
+        body { 
+            background: #333; 
+        }
+        div {
+        /* Способ 1
+        *   
+            width: 500px;
+            height: 700px; 
+        */
+        /* Способ 2
+        *   
+            font-size: 0;
+        */
+        /* Способ 3
+        *   
+            line-height: 0;
+        */
+         position: absolute;
+         left: 200px; 
+         top: 50px;
+         border: 2px solid #28a028;
+         background: #fff;
+         
+        }
+
+        img {
+            /* Способ 4
+            *   
+            display: block;
+            */
+            /* Способ 5
+            *   
+             float: right;
+            */
+            width: 500px;
+            height: 700px;
+        }
+       </style>
+      </head>
+      <body>
+       <div>
+           <img src="https://images.unsplash.com/photo-1543549789-add7e987e50a?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8b3dsfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=60 400w" alt="logo"></div>
+</body>
+</html>

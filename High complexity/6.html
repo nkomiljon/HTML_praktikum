@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ниспадающее меню</title>
+    <style>
+        .menu > li {
+            display: inline-block;
+            margin: 0 20px;
+            border-radius: 5px;
+        }
+        li:hover ul { 
+            display: block; 
+        }
+        li ul {
+            position: absolute;
+            text-decoration: none;
+            list-style: none;
+            padding: 0 15px;
+            display: none; 
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px 1px rgba(222, 222, 222, .6); 
+        }
+        .menu li a {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px 1px rgba(222, 222, 222, .6); 
+        }
+        li ul a:hover {
+            width: 80px;
+            background-color: #1f75e6;
+        }
+        li a:hover {
+            display: block; 
+            padding: 5px; 
+            text-decoration: none; 
+            color: #666;
+            border: 1px solid #ccc;
+            background-color: #c70a0a; 
+            border-bottom: none; 
+        }
+        li a:hover {
+            color: #000; 
+            background-color: #fff;
+            border-radius: 2px;
+            box-shadow: 1px 1px 5px 1px rgba(222, 222, 222, .6);
+        }
+    </style>
+</head>
+<body>
+  <ul class="menu">
+      <li><a href="#">Файл</a>
+            <ul>
+                <li><a href="#">Новый</a></li>
+                <li><a href="#">Открыть</a></li>
+                <li><a href="#">Сохранить</a></li>
+                <li><a href="#">Закрыть</a></li>
+            </ul>
+        </li>
+      <li><a href="#">Правка</a>
+        <ul>
+            <li><a href="#">Вырезать</a></li>
+            <li><a href="#">Копировать</a></li>
+            <li><a href="#">Вставаить</a></li>
+            <li><a href="#">Удалить</a></li>
+        </ul>
+      </li>
+    </ul>
+
+</body>
+</html>

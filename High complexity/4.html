@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Индикатор выполнения</title>
+    <style>
+    .area {
+            width: 250px; 
+            border: 1px solid #333; 
+            position: relative; 
+            background: #fff;
+       }
+   .area .bg {
+            background: #eee8c5; 
+            position: absolute; 
+            height: 100%; 
+            width: 50%; 
+   }
+   .area .start,
+   .area .end {
+            position: absolute; 
+            font-size: 0.9em; 
+            top: 1px; 
+   } 
+   .area .start {
+            padding-left: 3px; 
+   } 
+   .area .end { 
+            right: 0; 
+            padding-right: 3px; 
+   }
+   .area .area_bg { 
+            position: relative; 
+            text-align: center; 
+   }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <div class="bg"></div>
+        <span class="start">0</span>
+        <span class="end">5</span>
+        <div class="area_bg">50%</div>
+    </div>
+</body>
+</html>

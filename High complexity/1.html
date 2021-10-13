@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блок с градиентом</title>
+    <style>
+    body {
+        background-image: url(" https://images.unsplash.com/photo-1542459504-9e13de128bb4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=989&q=80 989w");
+        opacity: 0.9;
+    }
+    .area {
+        margin: 8px;
+        padding: 7px;
+        border: 2px solid #004C3B;
+        border-radius: 7px;
+        background: linear-gradient(to bottom, rgba(97, 204, 180, 0.5) 0%, rgba(92, 165, 149, 0.5) 100%);
+    }
+    .area h3 {
+        position: relative;
+        border-radius: 7px 7px 0 0;
+        margin: 0;
+        padding: 7px;
+        font-weight: 400;
+        background: linear-gradient(to bottom, #FFD800, #FFBA00);
+    }
+    .area h3::after{
+        content: '';
+        position: absolute;
+        left: 5px;
+        bottom: -20px;
+        border: 10px solid transparent;
+        border-top: 10px solid #FFBA00;
+    }
+    .area p{
+        min-height: 65px;
+        border-radius: 0 0 7px 7px;
+        margin: 0;
+        padding: 15px 7px;
+        background-color: white;
+    }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <h3>Заголовка</h3>
+        <p>Содержимое</p>
+    </div>
+</body>
+</html>

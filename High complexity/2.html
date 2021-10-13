@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блок с тенью</title>
+    <style>
+ body {
+     padding: 50px;
+ }
+ .area {
+        height: 100px;
+        margin: 40px;
+        padding: 10px;
+        position: relative;
+        background-color: #C9E39C;
+        border: 1px solid #A3D869;
+        box-shadow:
+                    0 4px 4px 0 #C9E39C,
+              0 0 4px grey;
+    }
+  .area h3
+    {
+        position: absolute; 
+        top: -62px;
+        left: -1px;
+        display: inline;
+        max-width: 250px;
+        padding: 10px; 
+        border-bottom: none;
+        background-color: #C9E39C;
+        border-radius: 7px 7px 0 0;
+        border-bottom: 1px solid transparent;
+        box-shadow:
+                    0 4px 4px 0 #C9E39C,
+              0 0 4px grey;
+    }   
+
+  .area p
+    {
+        border-radius: 0 0 7px 7px;
+        box-shadow: 0 0 4px grey;
+    }
+    </style>
+</head>
+<body>
+    <div class="area">
+        <h3>Заголовок</h3>
+       Содержание блока
+    </div>
+</body>
+</html>

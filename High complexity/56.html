@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Электронный сомелье</title>
+    <style>
+          .scroll-pane {
+			width:200px;
+			height:250px;
+			outline:transparent;
+		}
+		.method-block {
+			height:90px;
+			border-radius:0 0 10px 10px;
+		}
+		.inn-big-block {
+			width:430px;
+		}
+
+        body {	
+            background:darkblue;
+            font-family:Tahoma, Arial;
+            color:#fff;
+  }
+        input[type="radio"],
+        input[type="checkbox"] {display:none}
+        ul {list-style:none; margin:0; padding:0}
+        p {margin:0}
+        .main-block { 
+            width:1000px;
+            margin:20px auto;
+  }
+        .esom { 
+            font-size:27px;
+            font-weight:normal;
+            color:#ffc261;
+        }
+  
+        .mid-block { 
+            display:inline-table;
+            margin:0 25px 30px 0;
+            background:#e8e8e8;	
+            background:linear-gradient(to bottom, #e8e8e8, #ccc);
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(#e8e8e8), to(#ccc));
+            width:200px;
+            height:300px;
+            border-radius:10px;
+            position:relative;
+            overflow:hidden;
+        }
+        .upper-mid-b { 
+            background:#6098ff;
+            background:linear-gradient(to bottom, #6098ff, #4279ff);
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(#6098ff), to(#4279ff));
+            border-radius:10px 10px 0 0;
+            padding:10px 20px;
+            height:45px;
+            box-sizing:border-box;
+            text-align:left;
+            white-space:nowrap;
+            border-bottom:1px solid rgba(255,255,255,0.9);
+    }
+        .upper-mid-b > p {	
+            display:inline-block;
+            margin:0;
+            width:50%;
+            letter-spacing:0.1px;
+        }
+        .upper-mid-b > p:first-child {
+            font-size:18px;
+            -webkit-transform:scale(1, 1.1);
+            transform:scale(1, 1.1);
+            text-shadow:1px 1px 1px rgba(0,0,0,0.2);
+        }
+        .up-mid-b-num {
+            font-size:11px;
+            text-align:right;
+            letter-spacing:-0.3px;
+            color:#ffffffbf
+        }
+        .bokal-block {
+            position:absolute;
+            width:160px;
+            height:250px;
+            overflow:hidden;
+            left:20px;
+        }
+        .bokal-block > div {
+            width:1000%;
+            transition:1s;
+            -webkit-transition:1s;
+        }
+        .bokal-block > div > label {
+            display:inline-block;
+            position:relative;
+            white-space:nowrap;
+            margin-left:-4px;
+        }
+        .bokal-block > div > label > p {
+            text-align:center;
+            margin-top:20px;
+            font-size:12px;
+            text-shadow:1px 1px 1px rgba(255,255,255,0.4);
+            color:#333;
+        }
+        .bokal-block > div > label > img {
+            width:160px;
+            height:210px;
+        }
+        .mid-block > label {
+            cursor:pointer;
+        }
+        .mid-block > label:before,
+        .mid-block > label:after {
+            position:absolute;
+            border-width:10px 10px;
+            border-style:solid;
+            top:140px;
+        }
+        .glass_1:checked ~ .select_g2:after,
+        .glass_2:checked ~ .select_g3:after,
+        .glass_3:checked ~ .select_g4:after,
+        .glass_4:checked ~ .select_g5:after,
+        .glass_5:checked ~ .select_g6:after,
+        .glass_6:checked ~ .select_g7:after,
+        .glass_7:checked ~ .select_g8:after,
+        .glass_8:checked ~ .select_g1:after {	
+            content:"";
+            border-color:transparent transparent transparent #808080;
+            right:-4px;
+        }
+        .glass_1:checked ~ .select_g2:before,
+        .glass_2:checked ~ .select_g3:before,
+        .glass_3:checked ~ .select_g4:before,
+        .glass_4:checked ~ .select_g5:before,
+        .glass_5:checked ~ .select_g6:before,
+        .glass_6:checked ~ .select_g7:before,
+        .glass_7:checked ~ .select_g8:before,
+        .glass_8:checked ~ .select_g1:before {
+            content:"";
+            border-color:transparent transparent transparent #fff;
+            right:-6px;
+            top:139px;
+            border-width:11px 11px;
+        }
+        .glass_1:checked ~ .select_g8:after,
+        .glass_2:checked ~ .select_g1:after,
+        .glass_3:checked ~ .select_g2:after,
+        .glass_4:checked ~ .select_g3:after,
+        .glass_5:checked ~ .select_g4:after,
+        .glass_6:checked ~ .select_g5:after,
+        .glass_7:checked ~ .select_g6:after,
+        .glass_8:checked ~ .select_g7:after {
+            content:"";
+            border-color:transparent #808080 transparent transparent;
+            left:-4px;	
+        }
+        .glass_1:checked ~ .select_g8:before,
+        .glass_2:checked ~ .select_g1:before,
+        .glass_3:checked ~ .select_g2:before,
+        .glass_4:checked ~ .select_g3:before,
+        .glass_5:checked ~ .select_g4:before,
+        .glass_6:checked ~ .select_g5:before,
+        .glass_7:checked ~ .select_g6:before,
+        .glass_8:checked ~ .select_g7:before {
+            content:"";
+            border-color:transparent #fff transparent transparent;
+            left:-6px;
+            top:139px;
+            border-width:11px 11px;	
+        }
+        .choose-block label > span {
+            cursor:pointer;
+        }
+        .choose-block input[disabled] + label > span {
+            cursor:default;
+        }
+        .choose-block label {
+            display:block;
+            color:#333;
+            font-size:12px;
+            padding:10px 20px;
+            border:1px solid transparent;
+            transition:0.5s;
+            -webkit-transition:0.5s;
+        }
+        .choose-block ul:not(.block-w-box) > li:first-child > input:checked + label:before {	
+            border-top:1px solid transparent;
+         }
+        .choose-block:not(.strong-block) ul:not(.block-w-box) > li:last-child > input:checked + label:before {	
+        border-bottom:1px solid transparent;
+         }
+        .choose-block ul:not(.block-w-box) > li > input:checked + label {
+            position:relative;
+            color:#1048a0;
+        }
+        .choose-block ul:not(.block-w-box) > li > input:checked + label:before {
+            background-color:rgba(100,100,100,0.5); 
+            background:linear-gradient(90deg, rgba(100,100,100,0.3) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image:-webkit-gradient(linear, 0 0,100% 0, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+            mask-image:linear-gradient(to right, rgba(0,0,0,1), rgba(0,0,0,0));
+            content:"";
+            position:absolute;
+            top:0;
+            left:-1px;
+            right:0;
+            bottom:0;
+            border-top:1px solid #fff;
+            border-bottom:1px solid #fff;
+        }
+        .strong-block ul > li > label > p {
+            float:right;
+            color:#777;
+            font-size:11px;
+        }
+        input[disabled] + label {
+            color:#aaa;
+        }
+        .big-block {
+            width:430px;
+        }
+        .inner-big-b {
+            padding:20px;
+            height:100%;
+        }
+        .inner-big-b input,
+        .inner-big-b > div > textarea,
+        .choose-ingird > select{
+            border: 1px solid #fff;
+            border-bottom: 1px solid #ccc;
+            width:100%;
+            box-sizing:border-box;
+            padding:2px;
+        }
+        .inner-big-b > div > textarea {
+            background: #E0E0E0;
+            background: linear-gradient(to bottom, #E0E0E0 0%, #fff 25%);
+            background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0%, #E0E0E0), color-stop(25%, #fff));
+        }
+        .inner-big-b input,
+        .choose-ingird > select{
+            background: #E0E0E0;
+            background: linear-gradient(to bottom, #E0E0E0, #fff);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#E0E0E0), to(#fff));
+            margin-bottom: 10px;
+            height: 25px;
+            font-style:italic;
+            padding-left:10px;
+        }
+        #type_size_ing,
+        #num_ing {
+                width:70px;
+            }
+        .choose-ingird {
+            margin-top:10px;
+            visibility:hidden;
+            height:50px;
+        }
+        .inner-big-b > div {
+            position:relative;
+            width:100%;
+        }
+        .inner-big-b > div > input:not(:checked) + label > span {
+            cursor:pointer;
+            border-bottom:1px dotted #333;
+        }
+        .inner-big-b > div > label {
+            font-size:11px;
+            color:#333;
+            display:inline-block;
+            height:25px;
+            padding:6px;
+            border-radius:3px 3px 0 0;
+        }
+        .choose-ingird > a,
+        .choose-ingird > label[for="add_ing"] {
+            color:#333;
+            display:inline;
+            padding:0 2px;
+            cursor:pointer;
+            font-size:12px;
+            margin-left:20px;
+            border-bottom:1px dotted #333;
+        }
+        .choose-ingird > a {
+            margin-left:80px;
+        }
+        .choose-ingird > * {
+            height:30px;
+        }
+        .inner-big-b > div > input:checked + label + textarea {
+            display:block;
+        }
+        .inner-big-b > div > input:checked + label {
+            background: #fff;
+            color:#1048a0;
+            border:none;
+        }
+        .inner-big-b > div > textarea {
+            height:115px;
+            position:absolute;
+            left:0;
+            top:25px;
+            display:none;
+            resize:none;
+            overflow:hidden;
+        }
+        .upper-big-b {
+            background:#74c3ff;
+            background:linear-gradient(to bottom, #74c3ff, #54acff);
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(#74c3ff), to(#54acff));	
+        }
+        .ingrid-list {
+            counter-reset:ing;
+            color:#003d9c;
+            font-size:12px;
+            margin:0 -5px;
+        }
+        .ingrid-list > li:hover > div{
+            visibility:visible;
+        }
+        .ingrid-list > li > div {
+            position:absolute;
+            right:0px;
+            top:1px;
+            font-size:12px;
+            transform:rotate(45deg);
+            -webkit-transform:rotate(45deg);
+            text-align:center;
+            color:#333;
+            cursor:pointer;
+            visibility:hidden;
+        }
+        .ingrid-list > li > p {
+            display:inline-block;
+            width:80%;
+            margin-left:15px;
+        }
+        .ingrid-list > li {
+            counter-increment:ing;
+            padding:0 15px 5px 10px;
+            border-bottom:1px solid #ccc;
+            margin-bottom:10px;
+            position:relative;
+        }
+        .ingrid-list > li > span > span {color:#5d5d5d;font-size:12px;}
+        .ingrid-list > li > span {
+            font-size:14px;
+            float:right;
+            color:#649afe;
+        }
+        .ingrid-list > li:before {
+            content:counter(ing, decimal) ". ";
+            margin-right:5px;
+            color:#b2b2b2;
+            position:absolute;
+        }
+        .inner-big-b > input[type="checkbox"]:checked + label {
+            display:none;
+        }
+        .inner-big-b > input[type="checkbox"]:checked ~ .choose-ingird {
+            visibility:visible;
+        }
+        .inner-big-b > label {
+            border-bottom:1px dotted #333;
+            height:auto;
+            color:#333;
+            font-size:11px;
+            padding:1px;
+            margin-left:23px;
+            cursor:pointer;
+        }
+        .small-block {
+            height:135px;	
+            background:#ccc;
+            color:#333;
+        }
+        .upper-small-b > p > span {
+            font-size:13px;
+            text-align:right;
+            color:rgba(255,255,255,0.75);
+        }
+        .upper-small-b {
+            color:#fff;
+            background:#9675c9;
+            background:linear-gradient(to bottom, #9675c9, #7755b3);
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(#9675c9), to(#7755b3));	
+        }
+        .center-mid-b {
+            height:57px;
+            padding-top:5px;
+            box-sizing:border-box;
+            background:#e6e6e6;
+            border-radius:0 0 10px 10px;
+            overflow:hidden;
+        }
+        .max-h-center-m-b {
+            height:90px;
+            padding:0;
+        }
+        .lower-mid-b {
+            width:100%;
+            font-size:11px;
+            padding:10px;
+            box-sizing:border-box;
+        }
+        .lower-mid-b > label,
+        .block-w-box label {
+            position:relative;
+            padding-left:20px;
+        }
+        .lower-mid-b > label > span,
+        .block-w-box label > span {
+            cursor:pointer;
+        }
+        .lower-mid-b > label:before,
+        .block-w-box label:before {
+            content:"";
+            position:absolute;
+            width:12px;
+            height:12px;
+            border:1px solid #fff;
+            left:0;
+            top:1px;
+            border-radius:3px;	
+            background:#b3b3b3;
+            cursor:pointer;
+        }
+        .block-w-box label {
+            padding-left:30px;
+        }
+        .block-w-box label:before {
+            left:10px;
+            top:10px;
+        }    
+        .mid-block > input:checked ~ .lower-mid-b > label:before,
+        .lower-mid-b > input:checked + label:before,
+        .block-w-box input:checked + label:before {
+            background:#6098ff;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li:nth-child(n+11) > input:checked + label {
+            width:12px;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li > input:checked + label > span {
+            position:relative;
+            left:-3px;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li:nth-child(n+11) > input:checked + label > span {
+            left:0;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li:nth-child(n+11) > input:checked + label > div {
+            left:2px;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li > input:checked + label > span:after {
+            content:"+";
+            position:absolute;
+            left:5px;
+        }
+        #porc_kol:checked ~ .center-mid-b > div > ul > li:nth-child(n+11) > input:checked + label > span:after {
+            left:10px;
+        }
+        .box-style:after,
+        .block-w-box label:after {
+            width:10px;
+            height:8px;
+            content:"";
+            position:absolute;
+            left:2px;
+            top:4px;
+            background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0.4) 50%, rgba(255,255,255,0));
+            background:-webkit-gradient(linear, 0 0, 0 100%, from(rgba(255,255,255,0)), color-stop(50%,rgba(255,255,255,0.4)), to(rgba(255,255,255,0)));
+            cursor:pointer;
+        }
+        .block-w-box label:after {
+            left:12px;
+            top:13px;
+        }
+        .block-w-box label {
+            padding-right:0;
+        }
+        
+        .range-block {width:177px; margin:auto} 
+        .range-block > ul { 
+            margin:0; 
+            padding:0; 
+            width:100%;
+            position:relative;
+            text-align:center;
+        }
+        .range-block ul:after {	
+            content:"";
+            width:94%;
+            height:2px;
+            position:absolute;
+            background:#ccc;
+            left:5px;
+            bottom:-36px;
+            border-bottom:1px solid #fff;
+            border-top:1px solid #b3b3b3;
+        }
+        .range-block li {
+            z-index:1;
+            float: left;
+            position:relative;
+        }
+        .range-block li:first-child {
+            margin-left:0;
+        }
+        .range-block li > label {
+            display:block;
+            position:relative;
+            width:16px;
+            height:39px;
+            padding-top:7px;
+            text-align:center;
+            font-size:9px;
+            cursor:pointer;
+        }
+        .time-c-block li > label {	
+            width:19.5px;
+        }
+        .range-block li > label:before {	
+            content:"";
+            display:block;
+            position:relative;
+            bottom:-20px;
+            width:1px;
+            height:5px;
+            background:#b3b3b3;
+            margin:auto;
+        }
+        .range-block input:checked + label:after {  
+            background-color:rgba(100,100,100,0.5); 
+            background:linear-gradient(to bottom, rgba(100,100,100,0.3) 0%, rgba(0,0,0,0) 100%);
+            -webkit-mask-image:-webkit-gradient(linear, 0 0,0 100%, from(rgba(0,0,0,1)), to(rgba(0,0,0,0)));
+            mask-image:linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+            content:"";
+            position:relative;
+            top:-55px;
+            left:-2px;
+            height:30px;
+            width:18px;
+            border-left:1px solid #fff;
+            border-right:1px solid #fff;
+            display:block;
+        }
+        .time-c-block input:checked + label:after { 
+            left:0;
+        }
+        .range-block li > label > div {
+            position:relative;
+        }
+        .range-block input:checked + label {color:#003d9c}
+        
+        .range-block input:checked + label > div:before,
+        .range-block input:checked + label > div:after {  
+            border-width:5px 5px;
+            border-style:solid;
+            position:relative;
+            display:inline-block;
+            top:8px;
+        }
+        .range-block input:checked + label > div:after {	
+            content:"";
+            border-color:transparent transparent #808080 transparent;
+            top:-4px;
+        }
+        .range-block input:checked + label > div:before {	
+            content:"";
+            border-width:6px 6px;	
+            border-color:transparent transparent #fff transparent;
+        }
+        
+        .range-block li > label::selection {
+            background:none;
+        }
+        
+        .time-c-block > .max-time { 
+            visibility:hidden;
+            position:absolute;
+        }
+        #time_max:checked ~ .center-mid-b > div > .max-time {
+            visibility:visible;
+            position:relative;
+        }
+        #time_max:checked ~ .center-mid-b > div > .min-time {
+            visibility:hidden;
+            position:absolute;
+        }
+        .papa-for-small-b > div:nth-child(even) {
+            margin-left:5px;
+        }
+        .papa-for-small-b {
+            display:inline-table;
+            width:460px;
+            height:300px;
+        }
+        .hard-block > ul:after {
+            background:linear-gradient(to right, rgb(6,155,49), #ff0 50%, #f00);
+            background:-webkit-gradient(linear, 0 0, 100% 0, from(rgb(6,155,49)), color-stop(50%,#ff0), to(#f00));
+        }
+        .method-block {
+            height:90px;
+            background:#e6e6e6;
+        }
+        .lower-block {
+            width:355px;
+            margin:auto;
+        }
+        .lower-block > input {
+            display: inline-block;
+            font-size:15px;
+            height: 37px;
+            width: 130px;
+            margin-left: -6px;
+            background: linear-gradient(to bottom, #999, #b9b9b9);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#999), to(#b9b9b9));
+            border: 1px solid #fff;
+            color: #fff;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+            border-radius:10px 0 0 10px;
+            cursor:pointer;
+        }
+        .lower-block > input[type='submit'] {	
+            background: linear-gradient(to bottom, #42c665, #6dd88d);
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#42c665), to(#6dd88d));
+            border-radius:0 10px 10px 0;
+        }
+        
+        .jspContainer
+        {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .jspPane
+        {
+            position: absolute;
+        }
+        
+        .jspVerticalBar
+        {
+            position: absolute;
+            top: 0;
+            right: 3px;
+            width: 16px;
+            height: 100%;
+            background: none;
+        }
+        
+        .jspHorizontalBar
+        {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 16px;
+            background: red;
+        }
+        
+        .jspVerticalBar *,
+        .jspHorizontalBar *
+        {
+            margin: 0;
+            padding: 0;
+        }
+        
+        .jspCap
+        {
+            display: none;
+        }
+        
+        .jspHorizontalBar .jspCap
+        {
+            float: left;
+        }
+        
+        .jspTrack
+        {
+            background: none;
+            position: relative;
+        }
+        
+        .jspDrag
+        {
+            position: relative;
+            top: 0;
+            left: 7px;
+            cursor: pointer;
+            overflow: hidden;
+            background:#ccc;
+            width:1px;
+            border-right:1px solid #fff;
+        }
+        
+        .jspHorizontalBar .jspTrack,
+        .jspHorizontalBar .jspDrag
+        {
+            float: left;
+            height: 100%;
+        }
+        
+        .jspArrow
+        {
+            background: none;
+            text-indent: -20000px;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .jspArrow.jspDisabled
+        {
+            cursor: default;
+            background: none;
+        }
+        
+        .jspVerticalBar .jspArrow
+        {
+            height: 16px;
+        }
+        
+        .jspHorizontalBar .jspArrow
+        {
+            width: 16px;
+            float: left;
+            height: 100%;
+        }
+        
+        .jspVerticalBar .jspArrow:focus
+        {
+            outline: none;
+        }
+        
+        .jspCorner
+        {
+            background: #eeeef4;
+            float: left;
+            height: 100%;
+        }
+        
+        
+        * html .jspCorner
+        {
+            margin: 0 -3px 0 0;
+        }
+        a.jspArrowUp.disabled:after {
+            content:"";
+            position:absolute;
+            border-width:8px 8px;
+            border-style:solid;
+            top:-5px;
+            left:2px;
+            border-color:transparent transparent #aaa transparent;
+        }
+        
+        a.jspArrowDown,
+        a.jspArrowUp {
+            display: block;
+            position: relative;
+            z-index: 1;
+            right: 2px;
+            text-indent: -2000px;
+            height:18px;
+        }
+        a.jspArrowDown {bottom: 0}
+        a.jspArrowUp {top: 0}
+        
+        a.jspArrowUp:after,
+        a.jspArrowUp:before {
+            position:absolute;
+            border-width:8px 8px;
+            border-style:solid;
+            top:-5px;
+            left:2px;
+        }
+        a.jspArrowUp:after {
+            content:"";
+            border-color:transparent transparent #808080 transparent;
+        }
+        a.jspArrowUp:before {
+            content:"";
+            border-width:9px 9px;
+            top:-7px;
+            left:1px;
+            border-color:transparent transparent #fff transparent;
+        }
+        a.jspArrowDown:after,
+        a.jspArrowDown:before {
+            position:absolute;
+            border-width:8px 8px;
+            border-style:solid;
+            bottom:-5px;
+            left:2px;
+        }
+        a.jspArrowDown:after {
+            content:"";
+            border-color:#808080 transparent transparent transparent;
+        }
+        a.jspArrowDown:before {
+            content:"";
+            border-width:9px 9px;
+            bottom:-7px;
+            left:1px;
+            border-color:#fff transparent transparent transparent;
+        }
+        a.jspArrowDown.disabled:after {
+            content:"";
+            position:absolute;
+            border-width:8px 8px;
+            border-style:solid;
+            bottom:-5px;
+            left:2px;
+            border-color:#aaa transparent transparent transparent;
+        }
+        .jScrollPaneDrag {
+            position: absolute;
+            cursor: pointer;
+            overflow: hidden;
+            background:#ff0;
+            left:9px;
+            border-right:1px solid #fff;
+            height:42px
+        }
+        .jScrollPaneContainer {
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .jScrollPaneTrack {
+            position: absolute;
+            cursor: pointer;
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+        .jScrollPaneDrag {
+            position: absolute;
+            cursor: pointer;
+            overflow: hidden;
+            background:#ccc;
+            height:42px
+        }
+        .jScrollPaneDragTop {
+            position: absolute;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+        }
+        .jScrollPaneDragBottom {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-block">
+        <h1 class="esom">Электронный сомелье</h1>
+        <form action="#">
+            <div class="mid-block first-block">
+                <div class="upper-mid-b">
+                    <p>Бокалы</p>
+                    <p class="up-mid-b-num"><span></span> видов</p>
+                </div>
+                    <input type="radio" name="glass" id="ig_1" class="glass_1" checked="checked">
+                    <input type="radio" name="glass" id="ig_2" class="glass_2">
+                    <input type="radio" name="glass" id="ig_3" class="glass_3">
+                    <input type="radio" name="glass" id="ig_4" class="glass_4">
+                    <input type="radio" name="glass" id="ig_5" class="glass_5">
+                    <input type="radio" name="glass" id="ig_6" class="glass_6">
+                    <input type="radio" name="glass" id="ig_7" class="glass_7">
+                    <input type="radio" name="glass" id="ig_8" class="glass_8">
+                    <label for="ig_1" class="select_g1" title="Первый бокал"></label>
+                    <label for="ig_2" class="select_g2" title="Второй бокал"></label>
+                    <label for="ig_3" class="select_g3" title="Третий бокал"></label>
+                    <label for="ig_4" class="select_g4" title="Четвёртый бокал"></label>
+                    <label for="ig_5" class="select_g5" title="Пятый бокал"></label>
+                    <label for="ig_6" class="select_g6" title="Шестой бокал"></label>
+                    <label for="ig_7" class="select_g7" title="Седьмой бокал"></label>
+                    <label for="ig_8" class="select_g8" title="Восьмой бокал"></label>
+                <div class="bokal-block no-scroll">
+                    <div>
+                        <label for="ig_1" class="select_g1"><img src=""><p>Бокал для белого вина</p></label>
+                        <label for="ig_2" class="select_g2"><img src=""><p>Рюмка</p></label>
+                        <label for="ig_3" class="select_g3"><img src=""><p>Тумблер(рокс)</p></label>
+                        <label for="ig_4" class="select_g4"><img src=""><p>Бокал для пива</p></label>
+                        <label for="ig_5" class="select_g5"><img src=""><p>Бокал для шампанского</p></label>
+                        <label for="ig_6" class="select_g6"><img src=""><p>Бокал для мартини</p></label>
+                        <label for="ig_7" class="select_g7"><img src=""><p>Шот(буллет)</p></label>
+                        <label for="ig_8" class="select_g8"><img src=""><p>Коньячка</p></label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mid-block second-block"> 
+                <div class="upper-mid-b">
+                    <p>Тип</p>
+                    <p class="up-mid-b-num"><span></span> типов</p>
+                </div>
+                <div class="scroll-pane type-block choose-block">
+                    <ul>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_1">
+                            <label for="typeOf_1"><span>Аперитивы</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_2">
+                            <label for="typeOf_2"><span>Диджестивы</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_3">
+                            <label for="typeOf_3"><span>Горячие</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_4" disabled>
+                            <label for="typeOf_4"><span>Молочные</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_5" disabled>
+                            <label for="typeOf_5"><span>Десертные</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_6">
+                            <label for="typeOf_6"><span>Слоистые</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_7" disabled>
+                            <label for="typeOf_7"><span>Дейзи</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_8" disabled>
+                            <label for="typeOf_8"><span>Джулепы</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_9">
+                            <label for="typeOf_9"><span>Смеш</span></label>	
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_10">
+                            <label for="typeOf_10"><span>Физы</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_11">
+                            <label for="typeOf_11"><span>Сангари</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_12">
+                            <label for="typeOf_12"><span>Кулеры</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_13" disabled>
+                            <label for="typeOf_13"><span>Слинги</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_14">
+                            <label for="typeOf_14"><span>Коблеры</span></label>	
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_15" disabled>
+                            <label for="typeOf_15"><span>Кардинал</span></label>	
+                        </li>
+                        <li>
+                            <input type="radio" name="typeOf" id="typeOf_16">
+                            <label for="typeOf_16"><span>Эг-Ног</span></label>				
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mid-block third-block"> 
+                <div class="upper-mid-b">
+                    <p>Крепость</p>
+                    <p class="up-mid-b-num"><span></span> вида</p>
+                </div>
+                <div class="choose-block strong-block">
+                    <ul>
+                        <li>
+                            <input type="radio" name="strongOf" id="strongOf_1">
+                            <label for="strongOf_1"><span>Безалкогольные</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="strongOf" id="strongOf_2">
+                            <label for="strongOf_2"><span>Слабоградусные</span><p>6..15%</p></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="strongOf" id="strongOf_3">
+                            <label for="strongOf_3"><span>Полукрепкие</span><p>16..22%</p></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="strongOf" id="strongOf_4">
+                            <label for="strongOf_4"><span>Крепкие</span><p>>23%</p></label>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mid-block fourth-block">
+                <div class="upper-mid-b">
+                    <p>Основа</p>
+                    <p class="up-mid-b-num"><span></span> напитков</p>
+                </div>
+                <div class="scroll-pane core-block choose-block">
+                    <ul>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_1" disabled>
+                            <label for="coreOf_1"><span>Абсент</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_2" disabled>
+                            <label for="coreOf_2"><span>Водка</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_3" disabled>
+                            <label for="coreOf_3"><span>Джин</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_4" disabled>
+                            <label for="coreOf_4"><span>Виски</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_5" disabled>
+                            <label for="coreOf_5"><span>Бренди</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_6" disabled>
+                            <label for="coreOf_6"><span>Ликер</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_7">
+                            <label for="coreOf_7"><span>Кальвадос</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_8" disabled>
+                            <label for="coreOf_8"><span>Текила</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_9">
+                            <label for="coreOf_9"><span>Квас</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_10">
+                            <label for="coreOf_10"><span>Вино</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_11" disabled>
+                            <label for="coreOf_11"><span>Ром</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_12">
+                            <label for="coreOf_12"><span>Пиво</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_13" disabled>
+                            <label for="coreOf_13"><span>Сакэ</span></label>
+                        </li>
+                        <li>
+                            <input type="radio" name="coreOf" id="coreOf_14" disabled>
+                            <label for="coreOf_14"><span>Самогон</span></label>
+                        </li>
+                    </ul>
+                </div>			
+            </div>
+            
+            <div class="mid-block big-block"> 
+                <div class="upper-mid-b upper-big-b">
+                    <p>Ингридиенты</p>
+                </div>
+                <div class="scroll-pane inn-big-block">
+                    <div class="inner-big-b">
+                        <ul class="ingrid-list"></ul>
+                        <input type="checkbox" id="add_ing">
+                        <label for="add_ing">добавить ингридиент</label>
+                        <div class="choose-ingird">
+                            <input type="text" id="name_ing" placeholder="Название ингридиента">
+                            <input type="number" id="num_ing" max="100" min="0" value="50">
+                            <select id="type_size_ing">
+                                <option>мл.</option>
+                                <option>гр.</option>
+                                <option>ст.л</option>
+                                <option>кг.</option>
+                            </select>
+                            <a id="add_ing_form">добавить</a>
+                            <label for="add_ing">отменить</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="papa-for-small-b">
+                <div class="mid-block small-block"> 
+                    <input type="checkbox" id="porc_kol">
+                    <div class="upper-mid-b upper-small-b">
+                        <p>Порции</p>
+                    </div>
+                    <div class="center-mid-b">
+                        <div class="range-block portion-block no-scroll">
+                          <ul>
+                            <li>
+                              <input type="radio" name="port" id="port_0">
+                              <label for="port_0">?<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_1">
+                              <label for="port_1"><span>1</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_2" checked="checked">
+                              <label for="port_2"><span>2</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_3">
+                              <label for="port_3"><span>3</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_4">
+                              <label for="port_4"><span>4</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_5">
+                              <label for="port_5"><span>5</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_6">
+                              <label for="port_6"><span>6</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_7">
+                              <label for="port_7"><span>7</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_8">
+                              <label for="port_8"><span>8</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_9">
+                              <label for="port_9"><span>9</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="port" id="port_10">
+                              <label for="port_10"><span>10</span><div></div></label>
+                            </li>    
+                          </ul>  
+                        </div>
+                    </div>
+                    <div class="lower-mid-b">
+                        <label for="porc_kol" class="box-style"><span>+2 порции</span></label>
+                    </div>
+                </div><div class="mid-block small-block"> 
+                    <input type="checkbox" id="time_max">
+                    <div class="upper-mid-b upper-small-b">
+                        <p>Время <span>приготовления</span></p>
+                    </div>
+                    <div class="center-mid-b">
+                        <div class="range-block time-c-block no-scroll">
+                          <ul class="max-time">
+                            <li>
+                              <input type="radio" name="time" id="time_m_0">
+                              <label for="time_m_0">?<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_1" checked="checked">
+                              <label for="time_m_1">10<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_2">
+                              <label for="time_m_2">15<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_3">
+                              <label for="time_m_3">20<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_4">
+                              <label for="time_m_4">30<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_5">
+                              <label for="time_m_5">45<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_6">
+                              <label for="time_m_6">60<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_7">
+                              <label for="time_m_7">90<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_m_8">
+                              <label for="time_m_8">120<div></div></label>
+                            </li>
+                          </ul>
+                          <ul class="min-time">
+                            <li>
+                              <input type="radio" name="time" id="time_0">
+                              <label for="time_0">1<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_1" checked="checked">
+                              <label for="time_1">2<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_2">
+                              <label for="time_2">3<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_3">
+                              <label for="time_3">4<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_4">
+                              <label for="time_4">5<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_5">
+                              <label for="time_5">6<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_6">
+                              <label for="time_6">7<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_7">
+                              <label for="time_7">8<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="time" id="time_8">
+                              <label for="time_8"><span>9</span><div></div></label>
+                            </li>
+                          </ul>  
+                        </div>
+                    </div>
+                    <div class="lower-mid-b">
+                        <label for="time_max" class="box-style"><span>Увеличенное время</span></label>
+                    </div>
+                </div>
+                <div class="mid-block small-block"> 
+                    <div class="upper-mid-b upper-small-b">
+                        <p>Сложность</p>
+                    </div>
+                    <div class="center-mid-b">
+                        <div class="range-block hard-block no-scroll">
+                          <ul>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_0">
+                              <label for="complicated_0">0<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_1">
+                              <label for="complicated_1">1<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_2" checked="checked">
+                              <label for="complicated_2">2<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_3">
+                              <label for="complicated_3">3<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_4">
+                              <label for="complicated_4">4<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_5">
+                              <label for="complicated_5">5<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_6">
+                              <label for="complicated_6">6</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_7">
+                              <label for="complicated_7">7</span><div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_8">
+                              <label for="complicated_8">8<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_9">
+                              <label for="complicated_9">9<div></div></label>
+                            </li>
+                            <li>
+                              <input type="radio" name="complicated" id="complicated_10">
+                              <label for="complicated_10">10<div></div></label>
+                            </li>    
+                          </ul>  
+                        </div>
+                    </div>
+                    <div class="lower-mid-b">
+                        <input type="checkbox" id="categ_hard">
+                        <label for="categ_hard" class="box-style"><span>вне категорий</span></label>
+                    </div>
+                </div><div class="mid-block small-block met-b"> 
+                    <div class="upper-mid-b upper-small-b">
+                        <p>Метод</p>
+                        <p class="up-mid-b-num"><span></span> методов</p>
+                    </div>
+                    <div class="scroll-pane method-block choose-block">
+                        <ul>
+                            <li>
+                                <input type="radio" name="methodOf" id="methodOf_1">
+                                <label for="methodOf_1"><span>Не важно</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="methodOf" id="methodOf_2">
+                                <label for="methodOf_2"><span>В шейкере</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="methodOf" id="methodOf_3">
+                                <label for="methodOf_3"><span>В бокале</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="methodOf" id="methodOf_4">
+                                <label for="methodOf_4"><span>В тазике</span></label>
+                            </li>
+                            <li>
+                                <input type="radio" name="methodOf" id="methodOf_5">
+                                <label for="methodOf_5"><span>В бочке</span></label>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mid-block second-block jew-b">
+                <div class="upper-mid-b">
+                    <p>Украшения</p>
+                    <p class="up-mid-b-num"><span></span> видов</p>
+                </div>
+                <div class="scroll-wrap">
+                    <div class="scroll-pane jewel-block choose-block">
+                        <ul class="block-w-box">
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_1">
+                                <label for="jewel_1"><span>Без украшения</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_2">
+                                <label for="jewel_2"><span>Долька апельсина</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_3">
+                                <label for="jewel_3"><span>Взбитые сливки с клубникой</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_4">
+                                <label for="jewel_4"><span>Долька мандарина на бокале</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_5">
+                                <label for="jewel_5"><span>Виноградинка на шпажке</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_6">
+                                <label for="jewel_6"><span>Долька киви на бокале</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_7">
+                                <label for="jewel_7"><span>Вишенка на шпажке</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_8">
+                                <label for="jewel_8"><span>Долька яблока на шпажке</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_9">
+                                <label for="jewel_9"><span>Арбузинка на шпажке</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_10">
+                                <label for="jewel_10"><span>Веточка мяты</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_11">
+                                <label for="jewel_11"><span>Долька лимона на бокале</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_12">
+                                <label for="jewel_12"><span>Долька лайма на бокале</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_13">
+                                <label for="jewel_13"><span>Ломтик банана на шпажке</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_14">
+                                <label for="jewel_14"><span>Взбитые сливки с вишней</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_15">
+                                <label for="jewel_15"><span>Долька клубники на бокале</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="jewel" id="jewel_16">
+                                <label for="jewel_16"><span>Апельсин на бокале</span></label>				
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mid-block second-block tag-b"> 
+                <div class="upper-mid-b">
+                    <p>Теги</p>
+                    <p class="up-mid-b-num"><span></span> видов</p>
+                </div>
+                <div class="scroll-wrap">
+                    <div class="scroll-pane tag-block choose-block">
+                        <ul class="block-w-box">
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_1">
+                                <label for="tags_1"><span>Бодрящие</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_2">
+                                <label for="tags_2"><span>Горькие</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_3">
+                                <label for="tags_3"><span>Сладкие</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_4">
+                                <label for="tags_4"><span>Молочные</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_5">
+                                <label for="tags_5"><span>Кислые</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_6">
+                                <label for="tags_6"><span>Дисертные</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_7">
+                                <label for="tags_7"><span>Солёные</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_8">
+                                <label for="tags_8"><span>Необыч. по употреб.</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_9">
+                                <label for="tags_9"><span>Тропические</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_10">
+                                <label for="tags_10"><span>Фруктовые</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_11">
+                                <label for="tags_11"><span>Травяные</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_12">
+                                <label for="tags_12"><span>Освежающие</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_13">
+                                <label for="tags_13"><span>Огненые</span></label>
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_14">
+                                <label for="tags_14"><span>Овощные</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_15">
+                                <label for="tags_15"><span>Лонгдринксы</span></label>	
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_16">
+                                <label for="tags_16"><span>Для девушек</span></label>				
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_17">
+                                <label for="tags_17"><span>Для парней</span></label>				
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_18">
+                                <label for="tags_18"><span>Для компаний</span></label>			
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_19">
+                                <label for="tags_19"><span>Для друзей</span></label>			
+                            </li>
+                            <li>
+                                <input type="checkbox" name="tags" id="tags_20">
+                                <label for="tags_20"><span>Для детей</span></label>			
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="mid-block big-block"> 
+                <div class="upper-mid-b upper-big-b">
+                    <p>Описание</p>
+                </div>
+                <div class="inner-big-b">
+                    <input type="text" name="name_cocktail" placeholder="Название">
+                    <input type="text" name="alt_name_cocktail" placeholder="Альтернативные названия через запятую">
+                    <div>
+                        <input type="radio" id="descp" name="text_area" checked="checked">
+                        <label for="descp"><span>краткое описание</span></label>			
+                        <textarea name="descrip"></textarea>
+                        <input type="radio" id="prep" name="text_area">
+                        <label for="prep"><span>инструкция по приготовлению</span></label>	
+                        <textarea name="prepare"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="lower-block">
+                <input type="reset" value="очистить">
+                <input type="submit" value="сохранить">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

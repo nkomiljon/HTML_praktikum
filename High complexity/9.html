@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пошаговая форма</title>
+    <style>
+     * {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+fieldset{
+	border: 0;
+	outline: 0;
+}
+button{
+	outline: 0;
+	border: 0;
+	box-shadow: none;
+}
+ul {
+	list-style: none;
+}
+
+input:focus {outline: none;}
+.clearfix:after {
+	content: " ";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;	
+}
+
+form {
+	font-size: 13px;
+	width: 36.3em; 
+	margin: 20px auto;	
+	background-color: #e9e9e9;
+	border: 1px solid #8f98a1;
+	border-radius: 4px;
+	font-family: Arial, sans-serif;	
+	color: #505050;
+}
+ 
+.menu {
+	width: 100%;
+}
+.nav {
+	font-size: 1.1em;
+	width: 100%;
+	height: 2.79em;
+	background-color: #2b69b7;
+	border: 1px solid #2a5893;
+	color: #1b4680;
+	border-radius: 2px;
+	box-shadow: 0 4px 8px -2px rgba(0,0,0,0.5);	
+	overflow: hidden;
+	white-space: nowrap;
+}
+.nav-item{
+	display: inline-block;
+	padding: 0 0.4em 0 0.4em;
+	line-height: 2.9em;
+	cursor: pointer;
+	position: relative;
+	z-index: 100;
+	transition: color ease .6s;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	min-width: 25%;
+}
+.nav-item:first-child{	
+	padding-left: 1em;
+	margin-left: -0.5em;
+}
+.nav-item:last-child {
+	padding-right: 20%;
+}
+.nav-item:after,
+.nav-item:before {
+	content: '';
+	position: absolute;
+	height: 52%;
+	right: 1px;
+	left: -2px;
+	margin-right: -2px; 
+	z-index: -1;
+}
+.nav-item:after {
+	top: 0;
+	-webkit-transform: skew(30deg);
+	-moz-transform: skew(30deg);
+	-ms-transform: skew(30deg);
+	transform: skew(30deg);
+	background: #82bbe8;
+	background: -webkit-linear-gradient(top, #82bbe8, #649ed9);
+	background: -moz-linear-gradient(top, #82bbe8, #649ed9);
+	background: linear-gradient(to bottom, #82bbe8, #649ed9);
+}
+.nav-item:before {
+	bottom: 0;
+	-webkit-transform: skew(-30deg);
+	-moz-transform: skew(-30deg);
+	-ms-transform: skew(-30deg);
+	transform: skew(-30deg);
+	background: #82bbe8;
+	background: -webkit-linear-gradient(top, #649ed9, #4882ca);
+	background: -moz-linear-gradient(top, #649ed9, #4882ca);
+	background: linear-gradient(to bottom, #649ed9, #4882ca);
+}
+.active:after {
+	background: #2d5c96;
+	background: -moz-linear-gradient(top, #589dd2, #2d5c96);
+	background: -webkit-linear-gradient(top, #589dd2, #2d5c96);
+	background: linear-gradient(to bottom, #589dd2, #2d5c96);
+}
+.active:before {
+	background: #2d5c96;
+	background: -webkit-linear-gradient(top, #2d5c96, #2a5792);
+	background: -moz-linear-gradient(top, #2d5c96, #2a5792);
+	background: linear-gradient(to bottom, #2d5c96, #2a5792);
+}
+.nav-item .icon:before {
+	content: "";
+	height: 25px;
+	padding: 0 0.6em 0 0;
+	margin-top: 0.4em;
+	float: left;
+}
+.nav-item:nth-child(1) .icon:before{
+	width: 19px;
+	background-position:  -28px -84px;
+}
+.nav-item:nth-child(2) .icon:before{
+	width: 15px;
+	background-position:  -55px -4px;
+}
+.nav-item:nth-child(3) .icon:before{
+	width: 32px;
+	background-position:  -126px -4px;
+}
+.nav-item:nth-child(4) .icon:before{
+	width: 13px;
+	background-position:  -102px -20px;
+}
+.active {
+	color: #fff;
+	text-shadow: 0 0 2px #1b4680;
+}
+.nav-item:hover{
+	color: #fff;
+}
+
+.fieldset {
+	padding: 2.4em 1.3em 1.3em 1.3em;	
+	width: 100%;
+	height: 100%;
+}
+.element {
+	background-color: #fff;
+	border: 1px solid #a6acb2;
+	border-radius: 4px;
+	box-shadow: inset 0 0 5px #8c969f;
+	color: #6b6b6b;
+	font-size: 0.9em;
+	display: block; 
+	padding: 0.65em;
+	width: 100%;
+	margin-bottom: 0.61em;
+}
+.element:hover,
+.element:focus {
+	box-shadow: inset 0 0 5px #8c969f, 0 0 8px #a6acb2;
+}
+.element:focus{
+	border-color: #8c969f; 
+}
+.corner, .corner-small, .corner-top {
+	position: relative;
+}
+.corner:after, .corner:before, .corner-small:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 2em;
+	height: 2em;
+}
+.corner:before {
+	top: 0;
+	left: 0;
+		background: linear-gradient(135deg, 
+		transparent, transparent 3px,
+		#8c969f 4px, #8c969f 4px,
+		transparent 5px, transparent 7px, 
+		#8c969f 8px, #8c969f 8px,
+		transparent 9px, transparent 11px, 
+		#8c969f 12px, #8c969f 12px,
+		transparent 13px, transparent 15px, 
+		#8c969f 16px, #8c969f 16px, 
+		transparent 17px, transparent);
+}
+.corner:after {
+		background: linear-gradient(-45deg, 
+		transparent, transparent 3px,
+		#8c969f 4px, #8c969f 4px,
+		transparent 5px, transparent 7px, 
+		#8c969f 8px, #8c969f 8px,
+		transparent 9px, transparent 11px, 
+		#8c969f 12px, #8c969f 12px,
+		transparent 13px, transparent 15px, 
+		#8c969f 16px, #8c969f 16px, 
+		transparent 17px, transparent);
+}
+label.corner-small{
+	display: block;
+}
+.corner-small:after {
+	background: linear-gradient(-45deg, 
+		transparent, transparent 4px,
+		#8c969f 5px, #8c969f 5px,
+		transparent 6px, transparent 7px, 
+		#8c969f 8px, #8c969f 8px,
+		transparent 9px, transparent 10px, 
+		#8c969f 11px, #8c969f 11px,
+		transparent 12px, transparent);
+}
+.button {
+	color: #fff;
+	font-size: 0.9em;
+	text-shadow: 0 0 1px #2d5c95;
+	border-radius: 4px;
+	padding: 0.3rem 0.5rem;
+	margin-top: 0.6em;
+	cursor: pointer;	
+	overflow: hidden;
+	border: 1px solid #2d5c95;
+	transition: color ease .3s;
+	min-width: 8em;
+}
+.colored {
+	background: #4d86cd; 
+	background: -webkit-linear-gradient(top, #80bae7, #4d86cd); 
+	background: -moz-linear-gradient(top, #80bae7, #4d86cd);
+	background: linear-gradient(180deg, #80bae7, #4d86cd);
+}
+
+.legend {
+	font-size: inherit;
+	font-family: inherit;
+	color: #505050;
+	position: relative;
+	padding-left: 2em;
+	margin-bottom: 0.7em;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+.legend:before {
+	content: "";
+	position: absolute;
+	display: block;
+	width: 25px;
+	height: 26px;
+	bottom: -2px;
+	left: 0;
+}
+button[type="submit"]{
+	-ms-transform: translateX(-50%);
+	-moz-transform: translateX(-50%);
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	margin-left: 1em;
+}
+
+.img_upload {
+	float: left;
+}
+.img_upload img {	
+	width: 7.85em;
+	height: 10.92em;
+	border-radius: 0.3em;
+	padding: 0.4em;
+	background: #4d86cd;
+	background: -moz-linear-gradient(top, #80bae7, #4d86cd);
+	background: linear-gradient(to bottom, #80bae7, #4d86cd);
+	border: 0.065em solid #8c969f;
+	box-shadow: inset 0 0 0 0.4em #fafbfb; 
+}
+.btn-upload input[type="file"] {
+  margin-top: -6em; 
+  font-size: 3em;
+  opacity: 0;
+}
+.btn-upload{ 
+	padding: 0;
+	margin-top: 0.26em;
+	width: 8.48em; 
+	height: 1.9em;
+	line-height: 1.9em;
+	text-align: center;
+	overflow: hidden; 
+}
+.next {
+	background: #e9e9e9; 
+	border-color: transparent;
+	position: relative;	
+	z-index: 100;
+}
+.next {
+	float: right;
+	padding-right: 1.2rem;
+	border-left-color: #589dd1; 
+	margin-left: 1em;
+}
+
+.next:after, 
+.next:before  
+{
+	content: "";
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	position: absolute;
+	height: 53%;
+	width: 100%;
+	border-radius: 3px;
+	z-index: -1;
+}
+.next:after , .prev:after {
+	top: 0;
+	background: #4d86cd;
+	background: -moz-linear-gradient(top, #82bbe8, #649ed9);
+	background: -webkit-linear-gradient(top, #82bbe8, #649ed9);
+	background: linear-gradient(180deg, #82bbe8, #649ed9);
+	border-top: 1px solid #589dd1;
+	border-right: 1px solid #589dd1;	
+}
+.next:after {
+	-webkit-transform: skew(40deg);
+	-moz-transform: skew(40deg);
+	-ms-transform: skew(40deg);
+	transform: skew(40deg);
+	left: -0.5rem;
+}
+.next:before {
+	-webkit-transform: skew(-40deg);
+	-moz-transform: skew(-40deg);
+	-ms-transform: skew(-40deg);
+	transform: skew(-40deg);
+	left: -0.5rem;
+	border-right: 1px solid #2a5892;	
+}
+.next:before , .prev:before {
+	bottom: 0;
+	background:  #4d86cd;
+	background: -moz-linear-gradient(top, #649ed9, #4882ca);
+	background: -webkit-linear-gradient(top, #649ed9, #4882ca);
+	background: linear-gradient(180deg, #649ed9, #4882ca);
+	border-bottom: 1px solid #2a5892;
+	border-left: 1px solid #589dd1;
+}
+.description .legend:before  {
+	background-position: -60px -85px;
+} 
+textarea.element {
+	height: 8.22em;
+	font-family: inherit;
+	resize: none;
+	overflow: auto;
+	outline: none;
+}
+.description .wrapper {
+	margin-left: 8.45em; 
+}
+    </style>
+</head>
+<body>
+    <form action="" method="post" enctype="multipart/form-data" name="coctail">
+        <nav class="menu">
+          <ul class="nav">
+            <li class="nav-item active" id="description"><span class="icon">Описание</span></li>
+            <li class="nav-item" id="ingredients"><span class="icon">Ингредиенты</span></li>
+            <li class="nav-item" id="options"><span class="icon">Параметры</span></li>
+            <li class="nav-item" id="goblets"><span class="icon">Бокалы</span></li>
+          </ul>
+        </nav>
+        <fieldset class="fieldset description corner" data-fieldName="description">
+          <h1 class="legend">Описание</h1>
+          <figure class="img_upload">
+            <img src="https://images.unsplash.com/photo-1599659236990-34cc97c7e363?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGN1cCUyMG9mJTIwY29mZmVlfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=100&q=60 100w" alt="Пример фото коктейля" id="image" />
+            <div class="button colored btn-upload" tabindex=1>
+              <span class="button_label">Загрузить</span>
+              <input type="file" name="select_photo" id="imgInput" accept="image/*" tabindex='-1' />
+            </div>
+          </figure>
+          <div class="wrapper">
+            <label class="corner-small"><input type="text" name="coctail-name" class="element" required placeholder="Название коктейля" maxlength="40"/></label>
+            <label class="corner-small"><input type="text" name="alternative-coctail-name" class="element" placeholder="Альтернативные названия через запятую" maxlength="100"/></label>
+            <label class="corner-small"><textarea name="coctail-description" class="element" placeholder="Краткое описание" maxlength="500"></textarea></label>
+          </div>
+          <label class="corner-small"><textarea name="coctail-instruction" class="element" placeholder="Инструкция для приготовления" maxlength="500"></textarea></label>
+          <button type="button" class="button next">Ингредиенты</button>
+        </fieldset>
+    </form>
+</body>
+</html>

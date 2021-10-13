@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нумерованные списки</title>
+     <style>
+       ol {
+            list-style-type: none;
+            counter-reset: li;
+            margin-left: 20px;
+        }
+        li:before {
+            content: '0'counter(li) '. ';
+            counter-increment: li;
+        }
+     </style>
+</head>
+<body>
+     <ol>
+        <p>Первый список начинается с 1</p>
+                <li>Балл</li>
+                <li>Агарес</li>
+                <li>Марбас</li>
+                <li>Пруфлас</li>
+                <li>Аамон</li>
+        <p>Второй список начинается с 6</p>
+                <li>Барбатос</li>
+                <li>Буер</li>
+                <li>Гасион</li>
+                <li>Ботис</li>
+    </ol>
+</body>
+</html>
